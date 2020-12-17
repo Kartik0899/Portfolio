@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Protfolio</title>
+    <!-- <link rel="stylesheet" href="login.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<!-- CSS of Project Section -->
+<style>
+    .service {
+        margin-bottom: 23px;
+    }
+
+    .service .service-text {
+        margin-bottom: 20px;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: xxx-large;
+        font-variant: all-petite-caps;
+    }
+
+    .news-card__excerpt {
+        color: white;
+        font-size: 12px;
+    }
+
+    .content-wrapper {
+        margin: 0 auto;
+        max-width: 1200px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .news-card {
+        border: 0px solid aqua;
+        margin: 0.5rem;
+        position: relative;
+        height: 12rem;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        flex: 1;
+        min-width: 290px;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 900px) {
+
+        .news-card {
+            height: 20rem
+        }
+    }
+
+    .news-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 80%);
+        ;
+        z-index: 0;
+    }
+
+    .news-card__card-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .news-card__image {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform 3s ease;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        position: relative;
+        z-index: -1;
+    }
+
+    .news-card__text-wrapper {
+        position: absolute;
+        bottom: 0rem;
+        padding: 1rem;
+        color: white;
+        transition: background-color 1.5s ease;
+    }
+
+    .news-card__title {
+        transition: color 1s ease;
+        margin-bottom: .5rem;
+    }
+
+    .news-card__post-date {
+        font-size: .7rem;
+        margin-bottom: .5rem;
+        color: #CCC;
+    }
+
+    .news-card__details-wrapper {
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 1.5s ease, opacity 1s ease;
+    }
+
+    @media (min-width: 900px) {
+        .news-card:hover .news-card__details-wrapper {
+            max-height: 20rem;
+            opacity: 1;
+        }
+
+        .news-card:hover .news-card__text-wrapper {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .news-card:hover .news-card__title {
+            color: yellow;
+        }
+
+        .news-card:hover .news-card__image {
+            transform: scale(1.2);
+            z-index: -1;
+        }
+    }
+
+    .news-card__excerpt {
+        font-weight: 300;
+    }
+
+    .news-card__read-more {
+        background: black;
+        color: #bbb;
+        display: block;
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.3rem;
+        margin-top: 1rem;
+        border: 1px solid #444;
+        font-size: 0.8rem;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        text-decoration: none;
+        width: 7rem;
+        margin-left: auto;
+        position: relative;
+        z-index: 5;
+    }
+
+    .news-card__read-more i {
+        position: relative;
+        left: 0.2rem;
+        color: #888;
+        transition: left 0.5s ease, color 0.6s ease;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .news-card__read-more:hover i {
+        left: 0.5rem;
+        color: yellow;
+    }
+
+
+
+    @media (max-width: 900px) {
+
+        .news-card {
+            height: 20rem;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .news-card:hover .news-card__details-wrapper {
+            max-height: 10rem;
+            opacity: 1;
+            font-size: 12px;
+        }
+
+        .news-card:hover .news-card__text-wrapper {
+            background-color: rgba(0, 0, 0, 0.6);
+            font-size: 12px;
+        }
+
+        .news-card:hover .news-card__title {
+            color: yellow;
+        }
+
+        .news-card:hover .news-card__image {
+            transform: scale(1);
+            z-index: -1;
+        }
+    }
+</style>
+<!-- End of Project Section -->
+
+
+
+<!-- CSS of Contact Section -->
+<style>
+    .social-container {
+        height: 100%;
+        background: whitesmoke;
+    }
+
+    .btn {
+        width: 100px;
+        height: 100px;
+        background-color: #fafafa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2em;
+        margin-right: 1em;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-radius: 10px;
+    }
+
+    i.fa {
+        font-size: 44px;
+    }
+
+    #fb {
+        color: #006fff;
+        text-shadow: 0 0 30px #006fff;
+    }
+
+    #ig {
+        color: #ff5f40;
+        text-shadow: 0 0 30px #ff5f40;
+    }
+
+    #tw {
+        color: #00acff;
+        text-shadow: 0 0 30px #00acff;
+    }
+
+    .btn.fb-btn {
+        box-shadow: 0 20px 20px -17px rgba(0, 111, 255, 0.53);
+    }
+
+    .btn.fb-btn:hover {
+        transform: scale(1.2);
+        box-shadow: 0 30px 45px -15px rgba(0, 111, 255, 0.65);
+    }
+
+    .btn.ig-btn {
+        box-shadow: 0 20px 20px -17px rgba(255, 16, 39, 0.5);
+    }
+
+    .btn.ig-btn:hover {
+        transform: scale(1.2);
+        box-shadow: 0 30px 45px -15px rgba(255, 16, 39, 0.57);
+    }
+
+    .btn.tw-btn {
+        box-shadow: 0 20px 20px -17px rgba(0, 255, 255, 0.53);
+    }
+
+    .btn.tw-btn:hover {
+        transform: scale(1.2);
+        box-shadow: 0 30px 45px -15px rgba(0, 111, 255, 0.6);
+    }
+
+    .social-container .social-text {
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .social-container .social-btn {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 23px;
+    }
+</style>
+<!-- End of Contact Section -->
+
+
+<!-- CSS of Header Part -->
+<style>
+    .header-part .header-image {
+        position: relative;
+        z-index: 0;
+        height: 900px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+    }
+
+    .header-part .header-image .shap_pattern {
+        position: absolute;
+        right: 20%;
+        bottom: 0;
+    }
+
+    .header-part .header-image::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-image: url(images/IMG-20190711-WA0007.jpg);
+        border-radius: 1px 292px 173px 1px;
+        width: 724px;
+        height: 767px;
+        content: '';
+    }
+
+    @media (max-width: 767px) {
+        .header-part .header-image::before {
+            width: 314px;
+            height: 300px;
+            content: '';
+            background-size: cover;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .header-part .header-image::before {
+            width: 370px;
+            height: 370px;
+            content: '';
+            background-size: cover;
+        }
+    }
+
+    .header-part .header-image::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-image: url(images/cirlcle.png);
+        width: 531px;
+        height: 504px;
+        content: '';
+        z-index: -2;
+    }
+
+    .slider_bg_1 {
+        background-image: url(images/banner.png);
+    }
+
+    @media (max-width: 767px) {
+        .header-part .header-image::after {
+            display: none;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .header-part .header-image::after {
+            width: 320px;
+            height: 320px;
+            content: '';
+            z-index: -2;
+            background-size: cover;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .header-part .header-image {
+            height: 500px;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .header-part .header-image {
+            height: 620px;
+        }
+    }
+</style>
+<!-- End of Header Part -->
+
+<body>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <!-- Navbar -->
+    <section class="navbar" id="header">
+        <div class="header container">
+            <div class="nav-bar">
+                <div class="brand">
+                    <a href="#home">
+                        <h1><span>K</span>.<span>B</span>.</h1>
+                    </a>
+                </div>
+                <div class="nav-list">
+                    <div class="hamburger">
+                        <div class="bar"></div>
+                    </div>
+                    <ul class="navbar-links">
+                        <li><a href="#home" data-after="Home">Home</a></li>
+                        <li><a href="#time" data-after="Timelines">Timelines</a></li>
+                        <li><a href="#about" data-after="About_Us">About Us</a></li>
+                        <li><a href="#projects" data-after="projects">Project</a></li>
+                        <li><a href="#contact" data-after="Contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Navbar -->
+
+    <!-- Header -->
+    <section id="home" class="header-part">
+        <div class="header-img header-image slider_bg_1">
+            <div class="shap_pattern">
+                <img src="images/grid.png" alt="header-img">
+            </div>
+            <div class="header-text">
+                <h3>Hello This Is Kartik Budhraja</h3>
+                <span>Creative Designer</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- End Header -->
+
+
+    <!-- Timelines -->
+    <section id="time" class="timelines body-noise">
+        <div class="tt noise">
+            <div class="timeline-text">
+                My Timelines
+            </div>
+            <div class="timeline">
+                <div class="timelines-container left">
+                    <div class="content">
+                        <h2>2017</h2>
+                        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum,
+                            vim
+                            ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per,
+                            habeo
+                            iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="timelines-container right">
+                    <div class="content">
+                        <h2>2016</h2>
+                        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum,
+                            vim
+                            ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per,
+                            habeo
+                            iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="timelines-container left">
+                    <div class="content">
+                        <h2>2015</h2>
+                        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum,
+                            vim
+                            ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per,
+                            habeo
+                            iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="timelines-container right">
+                    <div class="content">
+                        <h2>2012</h2>
+                        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum,
+                            vim
+                            ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per,
+                            habeo
+                            iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="timelines-container left">
+                    <div class="content">
+                        <h2>2011</h2>
+                        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum,
+                            vim
+                            ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per,
+                            habeo
+                            iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="timelines-container right">
+                    <div class="content">
+                        <h2>2007</h2>
+                        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum,
+                            vim
+                            ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per,
+                            habeo
+                            iusto primis ea eam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- End Timelines -->
+
+
+
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about about-container">
+            <div class="col-left">
+                <div class="about-img">
+                    <img src="images/IMG-20190711-WA0007.jpg" alt="img">
+                </div>
+            </div>
+            <div class="col-right">
+                <h1 class="section-title">About <span>Me</span></h1>
+                <p>I’m a new to the scene engineering student, trying my skills and potential at various platforms.
+                    Figuring out my limits. Broadening my thinking abilities and trying to think outside the box.
+                    Enhancing my abilities and talents, and showcasing them. I’ve invested my time and efforts into
+                    creating a cat clock, an online catalogue and a few other projects where I’ve showcased my coding
+                    skills to the best of my ability.
+                </p>
+                <p>
+                    Indulging in these projects have got me really pumped and I look forward to taking part in many more
+                    which will help me further in shaping my skills and making me better as I strive harder with each
+                    project. </p>
+                <div class="btn-container">
+                    <a href="#"> <button class="button one">
+                            Download Resume
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Section -->
+
+
+    <!-- Project Section -->
+    <section id="projects" class="service">
+        <div class="service-text">
+            My Projects
+        </div>
+        <div class="content-wrapper">
+            <div class="news-card">
+                <a href="#" class="news-card__card-link"></a>
+                <img src="images/bg_4.jpg" alt="" class="news-card__image">
+                <div class="news-card__text-wrapper">
+                    <h2 class="news-card__title">JavaScript Cat Clock</h2>
+                    <div class="news-card__post-date">Aug 08, 2020</div>
+                    <div class="news-card__details-wrapper">
+                        <p class="news-card__excerpt">Designed a clock using HTML, CSS and JAVASCRIPT as the coding
+                            variants.
+                            It is synced with the IST(Indian Standard Time) and conventially changes the images
+                            according to the time form dusk till dawn. &hellip;
+                        </p>
+                        <a href="#" class="news-card__read-more">Read more <i
+                                class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <a href="#" class="news-card__card-link"></a>
+                <img src="images/bg_4.jpg" alt="" class="news-card__image">
+                <div class="news-card__text-wrapper">
+                    <h2 class="news-card__title">Website Design</h2>
+                    <div class="news-card__post-date">Aug 08, 2020</div>
+                    <div class="news-card__details-wrapper">
+                        <p class="news-card__excerpt">It is an online catalog brought into exixtence using coding
+                            Language Like HTML, css
+                            , JAVASCRIPT and PHP. It is way of sifting through innumerable options of items
+                            and finally landing on that one piece which meets all your demands. Once the item is
+                            finalised
+                            , the owner's contact information is displayed, get in contact with him and purchase.
+                            &hellip;</p>
+                        <a href="#" class="news-card__read-more">Read more <i
+                                class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <a href="#" class="news-card__card-link"></a>
+                <img src="images/bg_4.jpg" alt="" class="news-card__image">
+                <div class="news-card__text-wrapper">
+                    <h2 class="news-card__title">Portfolios</h2>
+                    <div class="news-card__post-date">Oct 10, 2020</div>
+                    <div class="news-card__details-wrapper">
+                        <p class="news-card__excerpt">Made an online Portfolio to bring forth my work and all the
+                            projects
+                            that i have done to enhance my knowledge over the various coding languages and how to
+                            implement in the real world.
+                            &hellip;</p>
+                        <a href="#" class="news-card__read-more">Read more <i
+                                class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <a href="#" class="news-card__card-link"></a>
+                <img src="images/bg_4.jpg" alt="" class="news-card__image">
+                <div class="news-card__text-wrapper">
+                    <h2 class="news-card__title">Animations</h2>
+                    <div class="news-card__post-date">Aug 08, 2020</div>
+                    <div class="news-card__details-wrapper">
+                        <p class="news-card__excerpt">Enchaning the feel of the websites using animations. Websites can
+                            get a bit boring if they are filled with monotonous texts and a plain layout.
+                            To get the user's interest, why not use animations with illusions that they are actually in
+                            motion.
+                            &hellip;</p>
+                        <a href="#" class="news-card__read-more">Read more <i
+                                class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <a href="#" class="news-card__card-link"></a>
+                <img src="images/bg_4.jpg" alt="" class="news-card__image">
+                <div class="news-card__text-wrapper">
+                    <h2 class="news-card__title">Landing Page</h2>
+                    <div class="news-card__post-date">Aug 08, 2020</div>
+                    <div class="news-card__details-wrapper">
+                        <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+                            laudantium velit quos voluptatem dicta pariatur assumenda iure ab enim, cupiditate culpa
+                            dignissimos reprehenderit.</p>
+                        <a href="#" class="news-card__read-more">Read more <i
+                                class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="news-card">
+                <a href="#" class="news-card__card-link"></a>
+                <img src="images/bg_4.jpg" alt="" class="news-card__image">
+                <div class="news-card__text-wrapper">
+                    <h2 class="news-card__title">Amazing Title</h2>
+                    <div class="news-card__post-date">Aug 08, 2020</div>
+                    <div class="news-card__details-wrapper">
+                        <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
+                            pariatur
+                            nemo tempore repellat? Ullam sed officia.</p>
+                        <a href="#" class="news-card__read-more">Read more <i
+                                class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Project Section -->
+
+
+
+
+
+    <!-- Contact Section -->
+
+    <div class="social-container">
+        <div class="social-text">
+            Contact Me
+        </div>
+        <div class="social-btn">
+            <div class="btn fb-btn">
+                <i class="fa fa-facebook" aria-hidden="true" id="fb"></i>
+            </div>
+            <div class="btn ig-btn">
+                <i class="fa fa-instagram" aria-hidden="true" id="ig"></i>
+            </div>
+            <div class="btn ig-btn">
+                <i class="fa fa-google" aria-hidden="true" id="ig"></i>
+            </div>
+            <div class="btn tw-btn">
+                <i class="fa fa-twitter" aria-hidden="true" id="tw"></i>
+            </div>
+        </div>
+    </div>
+    <!-- End Contact Section -->
+
+
+
+
+    <script src="js/main.js"></script>
+
+    <!-- Navbar JS -->
+    <script>
+        const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
+        const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
+        const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
+        const header = document.querySelector('.header.container');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobile_menu.classList.toggle('active');
+        });
+
+        // document.addEventListener('scroll', () => {
+        // 	var scroll_position = window.scrollY;
+        // 	if (scroll_position > 250) {
+        // 		header.style.backgroundColor = '#29323c';
+        // 	} else {
+        // 		header.style.backgroundColor = 'transparent';
+        // 	}
+        // });
+
+        menu_item.forEach((item) => {
+            item.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobile_menu.classList.toggle('active');
+            });
+        });
+
+    </script>
+    <!-- End Navbar JS -->
+
+    <!-- Scroll JS -->
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- End Scroll JS -->
+
+
+</body>
+
+</html>
